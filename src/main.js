@@ -1,3 +1,5 @@
+'use strict';
+
 const NUMBER_OF_TASKS = 3;
 
 const getMenuTemplate = () => `
@@ -380,28 +382,28 @@ const getContentTemplate = () => `
     </div>
     <div class="board__tasks">
       ${getCardForm()}
-      ${Array.from({ length: NUMBER_OF_TASKS }, () => getCardTemplate()).join(``)}
+      ${Array.from({length: NUMBER_OF_TASKS}, () => getCardTemplate()).join(``)}
     </div>
     ${getLoadMoreButtonTemplate()}
   </section>
 `;
 
-const createElement = template => {
-  const parent = document.createElement('div');
+const createElement = (template) => {
+  const parent = document.createElement(`div`);
   parent.innerHTML = template;
 
   return parent.firstElementChild;
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener(`DOMContentLoaded`, () => {
   const menu = createElement(getMenuTemplate());
   const search = createElement(getSearchTemplate());
   const filter = createElement(getFiltersTemplate());
   const content = createElement(getContentTemplate());
 
-  const main = document.querySelector('.main');
-  const controlSection = main.querySelector('.main__control');
+  const main = document.querySelector(`.main`);
+  const controlSection = main.querySelector(`.main__control`);
   controlSection.appendChild(menu);
 
-  [search, filter, content].forEach(item => main.appendChild(item));
+  [search, filter, content].forEach((item) => main.appendChild(item));
 });
