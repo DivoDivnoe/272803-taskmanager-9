@@ -1,7 +1,7 @@
 # Личный проект «Менеджер задач» [![Build status][travis-image]][travis-url]
 
 * Студент: [Андрей Иванов](https://up.htmlacademy.ru/ecmascript/9/user/272803).
-* Наставник: `Неизвестно`.
+* Наставник: `Без наставника`.
 
 ---
 
