@@ -1,10 +1,8 @@
 import createElement from './components/create-element';
-import {
-  getContentTemplate,
-  getMenuTemplate,
-  getSearchTemplate,
-  getFiltersTemplate
-} from './components/templates';
+import getMenuTemplate from './components/menu-template';
+import getSearchTemplate from './components/search-temaplate';
+import getFiltersTemplate from './components/filters-template';
+import getContentTemplate from './components/content-template';
 
 document.addEventListener(`DOMContentLoaded`, () => {
   const menu = createElement(getMenuTemplate());
