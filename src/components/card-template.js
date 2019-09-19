@@ -1,5 +1,14 @@
-const getCardTemplate = (data) => `
-  <article class="card card--${data.color}">
+import {Task} from '../mocks';
+
+const getCardTemplate = (data) => {
+  const date = new Date(data.dueDate);
+
+  return `
+  <article class="
+    card card--${data.color}
+    ${data.dueDate < Date.now() ? `card--deadline` : ``}
+    ${Task.WEEK_DAYS.some((day) => data.repeatingDays[day]) ? `card--repeat` : ``}
+  ">
     <div class="card__form">
       <div class="card__inner">
         <div class="card__control">
@@ -29,15 +38,15 @@ const getCardTemplate = (data) => `
             <div class="card__dates">
               <div class="card__date-deadline">
                 <p class="card__input-deadline-wrap">
-                  <span class="card__date">23 September</span>
-                  <span class="card__time">11:15 PM</span>
+                  <span class="card__date">${date.getDate()} ${Task.MONTHS[date.getMonth()]}</span>
+                  <span class="card__time">${date.toLocaleTimeString(`en-US`, {hour: `2-digit`, minute: `2-digit`})}</span>
                 </p>
               </div>
             </div>
 
             <div class="card__hashtag">
               <div class="card__hashtag-list">
-                ${data.tags.map((tag) => `
+                ${[...data.tags].map((tag) => `
                   <span class="card__hashtag-inner">
                     <span class="card__hashtag-name">
                       #${tag}
@@ -52,5 +61,6 @@ const getCardTemplate = (data) => `
     </div>
   </article>
 `;
+};
 
 export default getCardTemplate;

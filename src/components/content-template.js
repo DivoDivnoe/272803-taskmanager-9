@@ -1,11 +1,8 @@
 import getCardTemplate from './card-template';
 import getCardFormTemplate from './card-form-template';
 import getLoadMoreButtonTemplate from './loadmore-button-template';
-import createTasksArray from '../mocks';
 
-const NUMBER_OF_TASKS = 7;
-
-const getContentTemplate = () => `
+const getContentTemplate = (tasks) => `
   <section class="board container">
     <div class="board__filter-list">
       <a href="#" class="board__filter">SORT BY DEFAULT</a>
@@ -14,7 +11,7 @@ const getContentTemplate = () => `
     </div>
     <div class="board__tasks">
       ${getCardFormTemplate()}
-      ${createTasksArray(NUMBER_OF_TASKS)
+      ${tasks
         .map((item) => getCardTemplate(item))
         .join(``)}
     </div>
